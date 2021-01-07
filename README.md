@@ -1,4 +1,4 @@
-# Optimizing_ML_pipelines_in_Azure
+# Optimizing ML pipelines in Azure
 
 ## Overview:
 This project is done as a part of Udacity's 'Machine Learning Engineer with Microsoft Azure' nanodegree course and we were given an opportunity to create and optimize an ML pipeline. We can do this process using two methods: Optimize the hyperparameters of a standard Scikit-learn Logistic Regression using HyperDrive and AutoML is used to build and optimize the model. Both the models are built on the same dataset so that they can be compared afterwards. 
