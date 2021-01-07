@@ -48,6 +48,7 @@ HyperDrive package(HyperDriveConfig) helps helps us to choose the parameters aut
 Use 'joblib.dump()' to save the model file. Whenwe have to deploy the same model, we have to register the same saved model first and then deploy it to receive an endpoint using .register_model(). 
 
 The results obtained after run are as follows:
+
 ![Logs_HD](Images/Logs_HD.png)
 ![Metric_HD](Images/Metric_HD.png)
 
@@ -70,6 +71,7 @@ where,
 The best model deployment step is similar to the previous method. 
 
 The results obtained after run are as follows:
+
 ![Logs_Metric_AutoML](Images/Logs_Metric_AutoML.png)
 ## Best model comparison:
 The result obtained after training Scikit learn is as follows: 
