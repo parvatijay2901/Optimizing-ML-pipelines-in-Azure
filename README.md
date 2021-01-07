@@ -13,7 +13,8 @@ The classification goal is to predict if the client will subscribe a term deposi
 
 ### Solution: 
 The solution can be visualized as follows:
-![Solution]()
+
+![Solution](Images/Solution.png)
 
 We can use Azure ML SDK to programmatically control the pipeline with Python. This can be done using:
 - **Train the model on Logistic regression algorithm and optimize the hyperparameters using HyperDrive:**  Scikit-Learn logistic regression model is used to train the dataset. Hyperparameters are adjustable parameters choosed for model training that guide the training process. The HyperDrive package helps us to automate choosing these parameters. 
@@ -47,8 +48,8 @@ HyperDrive package(HyperDriveConfig) helps helps us to choose the parameters aut
 Use 'joblib.dump()' to save the model file. Whenwe have to deploy the same model, we have to register the same saved model first and then deploy it to receive an endpoint using .register_model(). 
 
 The results obtained after run are as follows:
-![Logs_HD]()
-![Metric_HD]()
+![Logs_HD](Images/Logs_HD.png)
+![Metric_HD](Images/Metric_HD.png)
 
 ## AutoML:
 ### Data preparation:
@@ -60,7 +61,7 @@ AutoML configuration object contains and persists the parameters for configuring
 experiment_timeout_hours, task, Primary metric, n_cross_validations, compute_target, training_data, label_column_name are the parameters specified. 
 
 The hyperparameters chosen by the algorithm are as follows:
-![AutoML_HyperParameters]()
+![AutoML_HyperParameters](Images/AutoML_HyperParameters.png)
 where, 
 
 **ensembled_iterations** refers to number of iterations in the algorithm, **min_impurity_split** refers to Impurity threshold for early stopping in tree growth of Random forest, **weights** refer to strength of the parameters that needs to be passed. In the Random Forest algorithm, a split point at any depth will only be considered if it leaves at least **min_samples_leaf training** samples in each of the left and right branches. **min_samples_split** refers to minimum number of samples required to split an internal node, **min_weight_fraction_leaf** refers to the minimum weighted fraction of the sum total of weights required to be at a leaf node, **n_estimators** refers to the number of trees in the algorithm and **n_jobs** refers to the number of jobs to run in parallel. 
@@ -69,14 +70,15 @@ where,
 The best model deployment step is similar to the previous method. 
 
 The results obtained after run are as follows:
-![Logs_Metric_AutoML]()
-
+![Logs_Metric_AutoML](Images/Logs_Metric_AutoML.png)
 ## Best model comparison:
 The result obtained after training Scikit learn is as follows: 
-![Result_LR]()
+
+![Result_LR](Images/Result_LR.png)
 
 Voting Ensemble was selected as the optimal model by the AutoML run. It is an ensemble machine learning model that combines the predictions from multiple other models (Eg, Decision tree classifier, Random forest etc:-). It is a technique that may be used to improve model performance, ideally achieving better performance than any single model used in the ensemble.The results obtained after executing are as follows: 
-![Result_AutoML]()
+
+![Result_AutoML](Images/Result_LR.png)
 
 There isn't a significant difference in the accuracy of the models. A slight increase in case of 'Voting ensemble' might be due to the reason that it is more stable and gives better prediction as the aggregate opinion of multiple models is less noisy than other models.
 The traditional scikit-learn based method took 9'33" mins to run, whereas AutoML took _ mins to execute. Though overall AutoML took more time, 'Voting Ensemble' just took _ mins to run. 
@@ -88,7 +90,7 @@ Though in this project training using AutoML works fairly better than traditiona
 
 ## Proof of cluster clean up:
 Cluster clean up frees the computer resources, it can be done by deleting the compute instance. Proof is provided below. 
-![Cluster_CleanUP]()
+![Cluster_CleanUP](Images/Cluster_CleanUP.png)
 
 ## References:
 - [Microsoft Documentations](https://docs.microsoft.com/en-us/documentation/)
