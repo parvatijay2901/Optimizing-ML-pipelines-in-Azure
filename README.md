@@ -63,9 +63,18 @@ experiment_timeout_hours, task, Primary metric, n_cross_validations, compute_tar
 
 The hyperparameters chosen by the algorithm are as follows:
 ![AutoML_HyperParameters](Images/AutoML_HyperParameters.png)
+![AutoML_BestFit](Images/AutoML_BestFit.png)
 where, 
 
-**ensembled_iterations** refers to number of iterations in the algorithm, **min_impurity_split** refers to Impurity threshold for early stopping in tree growth of Random forest, **weights** refer to strength of the parameters that needs to be passed. In the Random Forest algorithm, a split point at any depth will only be considered if it leaves at least **min_samples_leaf training** samples in each of the left and right branches. **min_samples_split** refers to minimum number of samples required to split an internal node, **min_weight_fraction_leaf** refers to the minimum weighted fraction of the sum total of weights required to be at a leaf node, **n_estimators** refers to the number of trees in the algorithm and **n_jobs** refers to the number of jobs to run in parallel. 
+- **ensembled_iterations**([0, 1, 20, 23, 9, 4, 21]) refers to number of iterations in the algorithm
+- **ensembled_algorithms**(['LightGBM', 'XGBoostClassifier', 'RandomForest', 'LightGBM', 'LogisticRegression', 'RandomForest', 'ExtremeRandomTrees']) refers to the individual models present in Voting ensemble.
+- **min_impurity_split**(None) refers to Impurity threshold for early stopping in tree growth of Random forest
+- **weights** ([0.35714285714285715, 0.14285714285714285, 0.07142857142857142, 0.07142857142857142, 0.07142857142857142, 0.07142857142857142, 0.21428571428571427]) refers to strength of the parameters that needs to be passed. In the Random Forest algorithm, a split point at any depth will only be considered if it leaves at least 
+- **min_samples_leaf training**(0.01) samples in each of the left and right branches. 
+- **min_samples_split**(0.01) refers to minimum number of samples required to split an internal node
+- **min_weight_fraction_leaf**(0.0) refers to the minimum weighted fraction of the sum total of weights required to be at a leaf node 
+- **n_estimators**(25) refers to the number of trees in the algorithm 
+- **n_jobs**(1) refers to the number of jobs to run in parallel. 
 
 ### Deploy and analyse: 
 The best model deployment step is similar to the previous method. 
@@ -78,13 +87,13 @@ The result obtained after training Scikit learn is as follows:
 
 ![Result_LR](Images/Result_LR.png)
 
-Voting Ensemble was selected as the optimal model by the AutoML run. It is an ensemble machine learning model that combines the predictions from multiple other models (Eg, Decision tree classifier, Random forest etc:-). It is a technique that may be used to improve model performance, ideally achieving better performance than any single model used in the ensemble.The results obtained after executing are as follows: 
+Voting Ensemble was selected as the optimal model by the AutoML run. It is an ensemble machine learning model that combines the predictions from multiple other models (Eg, LightGBM, Random forest etc:-). It is a technique that may be used to improve model performance, ideally achieving better performance than any single model used in the ensemble.The results obtained after executing are as follows: 
 
 ![Result_AutoML](Images/Result_LR.png)
 
 There isn't a significant difference in the accuracy of the models. A slight increase in case of 'Voting ensemble' might be due to the reason that it is more stable and gives better prediction as the aggregate opinion of multiple models is less noisy than other models.
-The traditional scikit-learn based method took 9'33" mins to run, whereas AutoML took _ mins to execute. Though overall AutoML took more time, 'Voting Ensemble' just took _ mins to run. 
-Though in this project training using AutoML works fairly better than traditional method, by changing a few parameters we can increase the performance of Scikit-learn based model. 
+The traditional scikit-learn based method took 9'33" mins to run, whereas AutoML took 34'44" mins to execute. Though overall AutoML took more time, 'Voting Ensemble' just took 1'26" mins to run. 
+By changing a few parameters we can increase the performance of Scikit-learn based model. 
 
 ## Future improvements:
 - In case of scikit-learn based model, A different parameter sampler (Eg, Grid sampling or Bayesian sampling) can be used. Early stopping is mainly for iterative solutions, like Grid sampling. It is mainly used to terminate processes when a run gets stuck and does not improve over a couple of iterations. Analyze the performance by removing the bandit policy. Other parameters (max_total_runs, max_concurrent_runs, primary_metric) can be changed to optimize the pipeline. 
