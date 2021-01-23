@@ -44,7 +44,7 @@ HyperDrive package(HyperDriveConfig) helps helps us to choose the parameters aut
 
 - **Early termination policy:** Bandit is an early termination policy that terminates any runs where the primary metric is not within the specified slack factor with respect to the best performing training run. In our case BanditPolicy(slack_factor = 0.1, evaluation_interval=1, delay_evaluation=5). Slack factor refers to the slack allowed with respect to the best performing training run in ratio, ie, if the best metric run is less than 0.909, it will cancel the run. evaluation_interval specifies the frequency for applying the policy, ie, everytime the training script logs the primary metric count, policy is applied. delay_evaluation specifies the number of intervals to delay the policy evaluation. The policy applies every multiple of evaluation_interval that is greater than or equal to delay_evaluation. In our case after 5 intervals the policy is delayed. 
 
-### Deploy and analyse: 
+### Run and analyse: 
 Use 'joblib.dump()' to save the model file. Whenwe have to deploy the same model, we have to register the same saved model first and then deploy it to receive an endpoint using .register_model(). 
 
 The results obtained after run are as follows:
@@ -76,7 +76,7 @@ where,
 - **n_estimators**(25) refers to the number of trees in the algorithm 
 - **n_jobs**(1) refers to the number of jobs to run in parallel. 
 
-### Deploy and analyse: 
+### Run and analyse: 
 The best model deployment step is similar to the previous method. 
 
 The results obtained after run are as follows:
